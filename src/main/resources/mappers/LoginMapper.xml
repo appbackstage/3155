@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.LoginRepository">
+    <resultMap id="UserResultMap" type="User">
+        <id column="User_id" property="id"/>
+        <result column="User_name" property="username"/>
+        <result column="User_pwd" property="userpwd"/>
+        <result column="User_role" property="userrole"/>
+        <result column="User_group" property="usergroup"/>
+        <result column="User_state" property="userstate"/>
+    </resultMap>
+
+    <select id="loginUser"  resultType="int" parameterType="java.lang.String" >
+        select count(1) from user where User_name= #{username} and User_pwd= #{userpwd}
+    </select>
+    <select id="findUserByUsername"  resultType="User" parameterType="java.lang.String">
+        select * from user where User_name= #{username}
+    </select>
+</mapper>
