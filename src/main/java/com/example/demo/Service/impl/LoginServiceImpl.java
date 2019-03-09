@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -18,23 +20,32 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public int loginUser(String username, String userpwd) {
-        if (username !=null &&userpwd!=null){
-        return loginRepository.loginUser(username,userpwd);}
+        if (username != null && userpwd != null) {
+
+            return loginRepository.loginUser(username, userpwd);
+
+
+        }
         return 0;
     }
 
     @Override
     public User findUserByUsername(String username) {
-       if (username!=null){
+        if (username != null) {
 
-           return loginRepository.findUserByUsername(username);
-       }
+            return loginRepository.findUserByUsername(username);
+        }
 
         return null;
     }
 
     @Override
-    public File findFileByUserId(int id) {
-        return null;
+    public List<File> findFileByUserId(int id) {
+        return loginRepository.findFileByUserId(id);
+    }
+
+    @Override
+    public int updateStateByUsername(String username) {
+        return loginRepository.updateStateByUsername(username);
     }
 }

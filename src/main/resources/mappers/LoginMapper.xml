@@ -7,17 +7,27 @@
 <mapper namespace="com.example.demo.repository.LoginRepository">
     <resultMap id="UserResultMap" type="User">
         <id column="User_id" property="id"/>
-        <result column="User_name" property="username"/>
-        <result column="User_pwd" property="userpwd"/>
-        <result column="User_role" property="userrole"/>
-        <result column="User_group" property="usergroup"/>
-        <result column="User_state" property="userstate"/>
+        <result column="User_name" property="userName"/>
+        <result column="User_pwd" property="userPwd"/>
+        <result column="User_role" property="userRole"/>
+        <result column="User_group" property="userGroup"/>
+        <result column="User_state" property="userState"/>
+
     </resultMap>
 
-    <select id="loginUser"  resultType="int" parameterType="java.lang.String" >
+    <select id="loginUser" resultType="int" parameterType="java.lang.String">
         select count(1) from user where User_name= #{username} and User_pwd= #{userpwd}
     </select>
-    <select id="findUserByUsername"  resultType="User" parameterType="java.lang.String">
+
+    <select id="findUserByUsername" resultType="User" parameterType="java.lang.String">
         select * from user where User_name= #{username}
+    </select>
+
+    <update id="updateStateByUsername" parameterType="java.lang.String">
+        update user set User_state=1 where User_name= #{username}
+    </update>
+
+    <select id="findFileByUserId" resultType="File">
+        select * from file where uid = #{uid}
     </select>
 </mapper>
