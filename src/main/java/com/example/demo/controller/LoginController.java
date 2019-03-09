@@ -44,7 +44,7 @@ public class LoginController {
             Map<String, String> map = new HashMap<>();
             map.put("role", String.valueOf(user1
                     .getUserRole()));
-            map.put("aa",f.iterator().toString());
+            map.put("aa",f.toString());
             map.put("group", String.valueOf(user1.getUserGroup()));
             return new Gson().toJson(map);
         }

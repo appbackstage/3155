@@ -11,7 +11,7 @@ import java.util.List;
 public interface LoginRepository {
     int loginUser(@Param("username") String username, @Param("userpwd") String userpwd);
 
-    User findUserByUsername( String username);
+    User findUserByUsername(String username);
 
     int updateStateByUsername(String username);
 

@@ -27,8 +27,9 @@ public class DemoApplicationTests {
     public void contextLoads() {
 //       int i= loginService.loginUser("小伟","123456");
 //        System.out.println(i);
-         User user= loginRepository.findUserByUsername("小伟".toString());
-         System.out.println(user);
+
+         User user1= loginRepository.findUserByUsername("aaa");
+         System.out.println(user1);
         //loginService.updateStateByUsername("小伟");
 
 
@@ -44,7 +45,7 @@ public class DemoApplicationTests {
 //            String s = f.getFileName();
 //
 //        }
-
-    }
+//
+}
 
 }

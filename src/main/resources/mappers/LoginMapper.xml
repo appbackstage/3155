@@ -6,7 +6,7 @@
 
 <mapper namespace="com.example.demo.repository.LoginRepository">
     <resultMap id="UserResultMap" type="User">
-        <id column="User_id" property="id"/>
+        <id column="User_id" property="userId"/>
         <result column="User_name" property="userName"/>
         <result column="User_pwd" property="userPwd"/>
         <result column="User_role" property="userRole"/>
@@ -19,9 +19,9 @@
         select count(1) from user where User_name= #{username} and User_pwd= #{userpwd}
     </select>
 
-    <select id="findUserByUsername" resultType="User" parameterType="java.lang.String">
-        select * from user where User_name= #{username}
-    </select>
+<select id="findUserByUsername" resultMap="UserResultMap" parameterType="java.lang.String">
+    select * from user where User_name= #{username}
+</select>
 
     <update id="updateStateByUsername" parameterType="java.lang.String">
         update user set User_state=1 where User_name= #{username}
