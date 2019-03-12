@@ -2,10 +2,6 @@ package com.example.demo.domain;
 
 import org.apache.ibatis.type.Alias;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Objects;
 
 @Alias("User")

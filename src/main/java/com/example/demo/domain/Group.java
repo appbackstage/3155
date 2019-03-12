@@ -2,28 +2,48 @@ package com.example.demo.domain;
 
 import org.apache.ibatis.type.Alias;
 
-import javax.persistence.*;
-import java.util.Objects;
-
 @Alias("Alias")
 public class Group {
+    /**
+     * 属性
+     * id
+     * name
+     */
+
     private int groupId;
     private String groupName;
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "groupId=" + groupId +
-                ", groupName='" + groupName + '\'' +
-                '}';
+    /**
+     * 无参构造
+     */
+    public Group() {
     }
+
+    /**
+     * 有参构造
+     * @param groupId
+     * @param groupName
+     */
+
+    public Group(int groupId, String groupName) {
+        this.groupId = groupId;
+        this.groupName = groupName;
+    }
+
+    /**
+     * 有参
+     * @param groupName
+     */
 
     public Group(String groupName) {
         this.groupName = groupName;
     }
 
-    public Group() {
-    }
+    /**
+     * id
+     * get，set方法
+     * @return
+     */
 
     public int getGroupId() {
         return groupId;
@@ -33,6 +53,11 @@ public class Group {
         this.groupId = groupId;
     }
 
+    /**
+     * name
+     * get，set方法
+     * @return
+     */
     public String getGroupName() {
         return groupName;
     }
@@ -41,17 +66,15 @@ public class Group {
         this.groupName = groupName;
     }
 
+    /**
+     * tostring方法
+     * @return
+     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Group group = (Group) o;
-        return groupId == group.groupId &&
-                Objects.equals(groupName, group.groupName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(groupId, groupName);
+    public String toString() {
+        return "Group{" +
+                "groupId=" + groupId +
+                ", groupName='" + groupName + '\'' +
+                '}';
     }
 }

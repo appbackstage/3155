@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.GroupMapper">
+
+    <resultMap id="groupResultMap" type="com.example.demo.domain.Group">
+        <id column="group_id" property="groupId"/>
+        <result column="group_name" property="groupName" />
+    </resultMap>
+
+    <select id="getAllgroup" resultMap="groupResultMap">
+        select * from groups
+    </select>
+
+    <insert id="addgroup" parameterType="com.example.demo.domain.Group">
+        insert  into groups (group_Name)
+         value (#{groupName})
+    </insert>
+
+    <delete id="deletegroup" parameterType="int">
+        delete from groups where group_id=#{groupId}
+    </delete>
+
+    <update id="updategroup" parameterType="com.example.demo.domain.Group">
+                      update groups set
+                      group_name=#{groupName}
+                      where group_id=#{groupId}
+    </update>
+
+</mapper>

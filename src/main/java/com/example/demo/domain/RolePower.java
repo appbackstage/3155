@@ -2,7 +2,6 @@ package com.example.demo.domain;
 
 import org.apache.ibatis.type.Alias;
 
-import javax.persistence.*;
 import java.util.Objects;
 
 @Alias("RolePower")
