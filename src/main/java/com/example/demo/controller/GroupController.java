@@ -23,13 +23,15 @@ public class GroupController {
     @RequestMapping("groupAdd")
     @ResponseBody
     public void    groupadd(){
-        for (int i = 0; i < 3; i++) {
+
           Group group = new Group();
-            group.setGroupName("学生" + i);
-            groupService.addgroup(group);
+          group.setGroupName("学生");
+          groupService.addgroup(group);
+
+          System.out.println("数据生成完毕");
+
+
         }
-        System.out.println("数据生成完毕");
-    }
 
     @RequestMapping("groupDelete")
     @ResponseBody
@@ -42,9 +44,11 @@ public class GroupController {
     @ResponseBody
     public void    groupupdate() {
         Group group = new Group();
-        group.setGroupId(103);
+        group.setGroupId(4);
         group.setGroupName("学生---修改");
 
         groupService.updategroup(group);
+
+        System.out.println("修改成功");
     }
 }
