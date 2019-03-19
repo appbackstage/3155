@@ -12,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.io.File;
@@ -20,9 +21,14 @@ import java.io.IOException;
 @Controller
 public class FileUploadController {
 
+    @RequestMapping("/toUpload")
+    public String toUpload() {
+        return "upload";
+    }
+
 
     @PostMapping("/upload")
-    public String handleFormUpload(MyForm form,String role) {
+    public String handleFormUpload(MyForm form) {
         if (!form.getFile().isEmpty()) {
 
             String fileName = form.getName();
@@ -30,7 +36,7 @@ public class FileUploadController {
                 fileName = form.getFile().getOriginalFilename();
 
 
-            try (FileOutputStream fos = new FileOutputStream(new File("/home/yan/file/"+role+"/" + fileName))) {
+            try (FileOutputStream fos = new FileOutputStream(new File("/home/yan/file/" + fileName))) {
                 byte[] bytes = form.getFile().getBytes();
 
                 //   System.out.println(fileName + "===================" + bytes.length);
@@ -40,18 +46,18 @@ public class FileUploadController {
                 e.printStackTrace();
             }
 
-            return "redirect:uploadSuccess";
+            return "uploadSuccess";
         }
-        return "redirect:uploadFailure";
+        return "uploadFailure";
     }
 
 
     @RequestMapping(value = "/download", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> download(String filename,String role) throws IOException {
+    public ResponseEntity<byte[]> download(@RequestParam("filename") String filename) throws IOException {
 //                指定文件,必须是绝对路径
-        File file = new File("/home/yan/file/"+role+"/"+filename);
+        File file = new File("/home/yan/file/" + filename + ".pdf");
 //                下载浏览器响应的那个文件名
-        String dfileName = "1.png";
+        String dfileName = filename + ".pdf";
 //                下面开始设置HttpHeaders,使得浏览器响应下载
         HttpHeaders headers = new HttpHeaders();
 //                设置响应方式
@@ -62,5 +68,7 @@ public class FileUploadController {
         return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
     }
 
-
 }
+
+
+

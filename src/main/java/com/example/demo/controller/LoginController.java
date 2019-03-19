@@ -30,7 +30,7 @@ public class LoginController {
             User user1 = loginService.findUserByUsername(username);
             User admin = loginService.findUserByUsername("admin");
             List<File> admins = loginService.findFileByUserId(admin.getUserId());
-            int group =loginService.findUserByGroup(user1.getUserGroup());
+            int group = loginService.findUserByGroup(user1.getUserGroup());
             List<String> ad = new ArrayList<>();
             for (File file : admins
             ) {
@@ -53,7 +53,7 @@ public class LoginController {
             map.put("role", String.valueOf(user1
                     .getUserRole()));
             map.put("files", f.toString());
-            map.put("groupnumber",String.valueOf(group));
+            map.put("groupnumber", String.valueOf(group));
             map.put("adminfiles", ad.toString());
             return new Gson().toJson(map);
         }
