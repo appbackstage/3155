@@ -27,6 +27,6 @@
 	请求类型：post
 	请求参数：
 	{
-		filename:"a.pdf"
+		filename:"file"
 	} 
 	
