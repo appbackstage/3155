@@ -9,6 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface LoginRepository {
+
     int loginUser(@Param("username") String username, @Param("userpwd") String userpwd);
 
     User findUserByUsername(String username);
@@ -16,4 +17,5 @@ public interface LoginRepository {
     int updateStateByUsername(String username);
 
     List<File> findFileByUserId(int id);
+
 }

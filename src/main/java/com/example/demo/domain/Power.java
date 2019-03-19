@@ -3,11 +3,12 @@ package com.example.demo.domain;
 import org.apache.ibatis.type.Alias;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
 @Alias("Power")
-public class Power {
+public class Power implements Serializable {
     private int powerId;
     private String powerName;
 

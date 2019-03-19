@@ -3,10 +3,11 @@ package com.example.demo.domain;
 import org.apache.ibatis.type.Alias;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Alias("RolePower")
-public class RolePower {
+public class RolePower implements Serializable {
     private int rolePowerId;
     private int roleId;
     private int powerId;

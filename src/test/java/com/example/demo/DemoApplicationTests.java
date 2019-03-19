@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -27,9 +28,14 @@ public class DemoApplicationTests {
     public void contextLoads() {
 //       int i= loginService.loginUser("小伟","123456");
 //        System.out.println(i);
+        long startTime =  System.currentTimeMillis();
 
-         User user1= loginRepository.findUserByUsername("aaa");
+         User user1= loginRepository.findUserByUsername("小伟阿");
          System.out.println(user1);
+
+        long endTime =  System.currentTimeMillis();
+        long usedTime = (endTime-startTime);
+        System.out.println(usedTime);
         //loginService.updateStateByUsername("小伟");
 
 

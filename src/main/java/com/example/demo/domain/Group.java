@@ -3,10 +3,11 @@ package com.example.demo.domain;
 import org.apache.ibatis.type.Alias;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Alias("Alias")
-public class Group {
+public class Group implements Serializable {
     private int groupId;
     private String groupName;
 

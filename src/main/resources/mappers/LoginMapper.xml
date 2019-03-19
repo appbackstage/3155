@@ -5,6 +5,7 @@
 
 
 <mapper namespace="com.example.demo.repository.LoginRepository">
+    <cache type="com.example.demo.util.RedisTest"/>
     <resultMap id="UserResultMap" type="User">
         <id column="User_id" property="userId"/>
         <result column="User_name" property="userName"/>
@@ -12,16 +13,15 @@
         <result column="User_role" property="userRole"/>
         <result column="User_group" property="userGroup"/>
         <result column="User_state" property="userState"/>
-
     </resultMap>
 
     <select id="loginUser" resultType="int" parameterType="java.lang.String">
         select count(1) from user where User_name= #{username} and User_pwd= #{userpwd}
     </select>
 
-<select id="findUserByUsername" resultMap="UserResultMap" parameterType="java.lang.String">
-    select * from user where User_name= #{username}
-</select>
+    <select id="findUserByUsername" resultMap="UserResultMap" parameterType="java.lang.String">
+       select * from user where User_name= #{username}
+    </select>
 
     <update id="updateStateByUsername" parameterType="java.lang.String">
         update user set User_state=1 where User_name= #{username}

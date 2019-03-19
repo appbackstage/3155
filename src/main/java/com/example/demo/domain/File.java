@@ -2,8 +2,10 @@ package com.example.demo.domain;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 @Alias("File")
-public class File {
+public class File implements Serializable {
     private int id;
     private String fileName;
     private int uid;
