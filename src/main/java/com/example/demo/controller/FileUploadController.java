@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Controller
 public class FileUploadController {
@@ -54,16 +55,19 @@ public class FileUploadController {
 
     @RequestMapping(value = "/download", produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> download(@RequestParam("filename") String filename) throws IOException {
+
 //                指定文件,必须是绝对路径
-        File file = new File("/home/yan/file/" + filename + ".pdf");
+        File file = new File("/home/yan/file/" + filename+".docx" );
 //                下载浏览器响应的那个文件名
-        String dfileName = filename + ".pdf";
+        System.out.println();
+        String filename1 = URLEncoder.encode(file.getName(),"UTF-8");
+        String dfileName = filename+".docx" ;
 //                下面开始设置HttpHeaders,使得浏览器响应下载
         HttpHeaders headers = new HttpHeaders();
 //                设置响应方式
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 //                设置响应文件
-        headers.setContentDispositionFormData("attachment", dfileName);
+        headers.setContentDispositionFormData("attachment", filename1);
 //                把文件以二进制形式写回
         return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
     }
