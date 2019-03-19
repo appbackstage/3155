@@ -1,0 +1,32 @@
+登录接口：
+	接口名称： 47.104.199.143/login?username="参数1"&userpwd="参数2"
+	接口功能：用户登录
+	请求类型：post
+	请求参数：
+	{
+		username: "admin"//登录的账户
+		userpwd:"123456"//登录的密码
+	} 
+	返回参数：
+	{
+		group:"admin" //组名
+		role:"admin"//角色名
+		files:"fiel1，file2"//当前用户都有那些设计文件
+		adminfiles:"file1.file2"//系统模板
+		groupnumber:"1"//当前组在线人数
+	}
+上传文件：
+	接口名称： 47.104.199.143/toUpload
+	接口功能：上传文件
+	请求类型：post
+	
+	
+下载文件：
+	接口名称： 47.104.199.143/download
+	接口功能：下载文件
+	请求类型：post
+	请求参数：
+	{
+		filename:"a.pdf"
+	} 
+	
