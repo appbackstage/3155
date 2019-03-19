@@ -48,4 +48,11 @@ public class LoginServiceImpl implements LoginService {
     public int updateStateByUsername(String username) {
         return loginRepository.updateStateByUsername(username);
     }
+
+    @Override
+    public int findUserByGroup(int group) {
+        return loginRepository.findUserByGroup(group);
+    }
+
+
 }

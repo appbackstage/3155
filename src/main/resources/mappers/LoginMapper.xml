@@ -5,7 +5,7 @@
 
 
 <mapper namespace="com.example.demo.repository.LoginRepository">
-    <cache type="com.example.demo.util.RedisTest"/>
+    <!--<cache type="com.example.demo.util.RedisTest"/>-->
     <resultMap id="UserResultMap" type="User">
         <id column="User_id" property="userId"/>
         <result column="User_name" property="userName"/>
@@ -29,5 +29,9 @@
 
     <select id="findFileByUserId" resultType="File">
         select * from file where uid = #{uid}
+    </select>
+
+    <select id="findUserByGroup" resultType="int">
+        select count(1) from user where User_group=#{group} and User_state=1
     </select>
 </mapper>

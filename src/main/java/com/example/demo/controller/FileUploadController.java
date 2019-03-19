@@ -22,7 +22,7 @@ public class FileUploadController {
 
 
     @PostMapping("/upload")
-    public String handleFormUpload(MyForm form) {
+    public String handleFormUpload(MyForm form,String role) {
         if (!form.getFile().isEmpty()) {
 
             String fileName = form.getName();
@@ -30,7 +30,7 @@ public class FileUploadController {
                 fileName = form.getFile().getOriginalFilename();
 
 
-            try (FileOutputStream fos = new FileOutputStream(new File("/home/yan/file/" + fileName))) {
+            try (FileOutputStream fos = new FileOutputStream(new File("/home/yan/file/"+role+"/" + fileName))) {
                 byte[] bytes = form.getFile().getBytes();
 
                 //   System.out.println(fileName + "===================" + bytes.length);
@@ -47,9 +47,9 @@ public class FileUploadController {
 
 
     @RequestMapping(value = "/download", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> download() throws IOException {
+    public ResponseEntity<byte[]> download(String filename,String role) throws IOException {
 //                指定文件,必须是绝对路径
-        File file = new File("/home/yan/file/1.png");
+        File file = new File("/home/yan/file/"+role+"/"+filename);
 //                下载浏览器响应的那个文件名
         String dfileName = "1.png";
 //                下面开始设置HttpHeaders,使得浏览器响应下载

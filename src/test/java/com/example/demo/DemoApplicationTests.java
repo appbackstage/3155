@@ -28,15 +28,18 @@ public class DemoApplicationTests {
     public void contextLoads() {
 //       int i= loginService.loginUser("小伟","123456");
 //        System.out.println(i);
-        long startTime =  System.currentTimeMillis();
-
-         User user1= loginRepository.findUserByUsername("小伟阿");
-         System.out.println(user1);
-
-        long endTime =  System.currentTimeMillis();
-        long usedTime = (endTime-startTime);
-        System.out.println(usedTime);
+//        long startTime =  System.currentTimeMillis();
+//
+//         User user1= loginRepository.findUserByUsername("小伟阿");
+//         System.out.println(user1);
+//
+//        long endTime =  System.currentTimeMillis();
+//        long usedTime = (endTime-startTime);
+//        System.out.println(usedTime);
         //loginService.updateStateByUsername("小伟");
+
+        int i = loginService.findUserByGroup(2);
+        System.out.println(i);
 
 
 //      User user=  loginService.findUserByUsername("小伟");
@@ -52,6 +55,6 @@ public class DemoApplicationTests {
 //
 //        }
 //
-}
+    }
 
 }

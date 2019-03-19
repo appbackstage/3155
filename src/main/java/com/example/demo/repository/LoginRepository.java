@@ -18,4 +18,7 @@ public interface LoginRepository {
 
     List<File> findFileByUserId(int id);
 
+
+
+    int findUserByGroup(@Param("group") int group);
 }
